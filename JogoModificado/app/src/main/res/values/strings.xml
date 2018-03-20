@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Jogo Tentativas</string>
+    <string name="lblTerminou">O jogo terminou...</string>
+    <string name="lblMaior">O número é maior!</string>
+    <string name="lblMenor">O número é menor!</string>
+    <string name="lblGanhou">Parabéns! Você acertou!</string>
+    <string name="lblPerdeu">Você errou!</string>
+</resources>
