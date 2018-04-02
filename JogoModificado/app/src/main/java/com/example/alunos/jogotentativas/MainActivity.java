@@ -1,7 +1,5 @@
 package com.example.alunos.jogotentativas;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             txt.setText(getResources().getString(R.string.lblMenor));
             this.tentativas++;
         } else{
-            txt.setText(getResources().getString(R.string.lblPerdeu));
+            txt.setText(getResources().getString(R.string.lblTerminou));
             this.tentativas++;
         }
     }
