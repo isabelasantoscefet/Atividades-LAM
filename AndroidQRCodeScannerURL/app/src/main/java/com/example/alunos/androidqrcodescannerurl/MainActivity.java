@@ -18,11 +18,9 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener{
-    //Elementos do layout
     private Button btnScan;
     private TextView lblName, lblAddress;
     private String aUrl;
-    //QRCode scanner
     private IntentIntegrator qrScan;
 
     @Override
@@ -34,11 +32,7 @@ public class MainActivity extends AppCompatActivity
         lblName = findViewById(R.id.lblName);
         lblAddress = findViewById(R.id.lblAddress);
         aUrl = lblAddress.getText().toString();
-
-        //intializing scan object
         qrScan = new IntentIntegrator(this);
-
-        //attaching onclick listener
         btnScan.setOnClickListener(this);
     }
 
@@ -55,14 +49,14 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
             }else {
                 try{
-                    JSONObject obj = new JSONObject(result.getContents());
-                    lblName.setText(obj.getString("name"));
-                    lblAddress.setText(obj.getString("address"));
-                    aUrl = lblAddress.getText().toString();
-
-                    if((aUrl.indexOf("http://")!=0) && (aUrl.indexOf(".com")==0)){
-                        Intent intencao = new Intent(Intent.ACTION_VIEW, Uri.parse(aUrl.toLowerCase()));
+                    String string = result.getContents();
+                    if((string.indexOf("http://www")!=0) && (string.indexOf(".com")!=0)){
+                        Intent intencao = new Intent(Intent.ACTION_VIEW, Uri.parse(string.toLowerCase()));
                         startActivity(intencao);
+                    } else {
+                        JSONObject obj = new JSONObject(result.getContents());
+                        lblName.setText(obj.getString("name"));
+                        lblAddress.setText(obj.getString("address"));
                     }
                 }catch (JSONException e){
                     e.printStackTrace();
