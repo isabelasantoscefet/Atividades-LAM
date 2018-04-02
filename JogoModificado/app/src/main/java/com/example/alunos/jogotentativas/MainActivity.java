@@ -12,8 +12,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     Random gerador = new Random();
-    private int num = gerador.nextInt(1000);
-    private int tentativas = 10;
+    int num = gerador.nextInt(1000);
+    int tentativas = 0;
     EditText label;
 
 
@@ -29,19 +29,19 @@ public class MainActivity extends AppCompatActivity {
         label = findViewById(R.id.editText);
         String sorteado = label.getText().toString();
         int n = Integer.parseInt(sorteado);
-        if (n == this.num) {
-            label.setText(getResources().getString(R.string.lblGanhou));
-            SharedPreferences arquivo = getPreferences(Context.MODE_PRIVATE);
-        } else if(n < this.num){
-            label.setText(getResources().getString(R.string.lblMaior));
-        } else if(n < this.num){
-        label.setText(getResources().getString(R.string.lblMenor));
-        }
-        else{
-            label.setText(getResources().getString(R.string.lblPerdeu));
+
+
+        if(n == this.num){
+            txt.setText(getResources().getString(R.string.lblGanhou));
+        }else if(n < this.num){
+            txt.setText(getResources().getString(R.string.lblMaior));
+            this.tentativas++;
+        } else if(n > this.num){
+            txt.setText(getResources().getString(R.string.lblMenor));
+            this.tentativas++;
+        } else{
+            txt.setText(getResources().getString(R.string.lblPerdeu));
             this.tentativas++;
         }
-
-
     }
 }
