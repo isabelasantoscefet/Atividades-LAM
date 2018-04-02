@@ -13,33 +13,45 @@ public class MainActivity extends AppCompatActivity {
     int num = gerador.nextInt(1000);
     int tentativas = 0;
     EditText label;
-
+    int vetor[] = new int[5];
+    int partidas, certo;
+    TextView txt = (TextView) findViewById(R.id.txt1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        certo = 0;
     }
 
     public void JogoTentativas(View v) {
 
-        TextView txt = (TextView) findViewById(R.id.txt1);
         label = findViewById(R.id.editText);
         String sorteado = label.getText().toString();
         int n = Integer.parseInt(sorteado);
 
-
-        if(n == this.num){
-            txt.setText(getResources().getString(R.string.lblGanhou));
-        }else if(n < this.num){
-            txt.setText(getResources().getString(R.string.lblMaior));
-            this.tentativas++;
-        } else if(n > this.num){
-            txt.setText(getResources().getString(R.string.lblMenor));
-            this.tentativas++;
-        } else{
-            txt.setText(getResources().getString(R.string.lblTerminou));
-            this.tentativas++;
+        if(certo == 0) {
+            if (n == this.num) {
+                txt.setText(getResources().getString(R.string.lblGanhou));
+            } else if (n < this.num) {
+                txt.setText(getResources().getString(R.string.lblMaior));
+                this.tentativas++;
+            } else if (n > this.num) {
+                txt.setText(getResources().getString(R.string.lblMenor));
+                this.tentativas++;
+            } else {
+                txt.setText(getResources().getString(R.string.lblTerminou));
+                this.tentativas++;
+            }
+        }else{
+            txt.setText(getResources().getString(R.string.lblFim));
         }
+    }
+
+    public void Recomecar(View v){
+        tentativas = 1;
+        certo = 0;
+        num = gerador.nextInt(1000);
+        txt.setText(getResources().getString(R.string.lblRecomecar));
     }
 }

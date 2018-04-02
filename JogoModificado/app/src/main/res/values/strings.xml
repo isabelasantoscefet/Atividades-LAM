@@ -4,4 +4,6 @@
     <string name="lblMaior">O número é maior!</string>
     <string name="lblMenor">O número é menor!</string>
     <string name="lblGanhou">Parabéns! Você acertou!</string>
+    <string name="lblRecomecar">Informe um número entre 1 e 1000</string>
+    <string name="lblFim">Parabéns! Você acertou! Clique no botão RECOMEÇAR para jogar novamente.</string>
 </resources>
