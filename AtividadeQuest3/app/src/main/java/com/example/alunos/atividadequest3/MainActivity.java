@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
         String sorteado = label.getText().toString();
         int n = Integer.parseInt(sorteado);
         if (n == this.num) {
-            label.setText(getResources().getString(R.string.lblGanhou));
+            txt.setText(getResources().getString(R.string.lblGanhou));
         } else if (this.tentativas > 0) {
-            label.setText(getResources().getString(R.string.lblPerdeu));
+            txt.setText(getResources().getString(R.string.lblPerdeu));
             this.tentativas--;
         } else if (this.tentativas == 0) {
-            label.setText(getResources().getString(R.string.lblTerminou));
+            txt.setText(getResources().getString(R.string.lblTerminou));
         }
 
     }
