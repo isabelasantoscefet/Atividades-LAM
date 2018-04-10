@@ -11,12 +11,12 @@ public class MainActivity extends AppCompatActivity {
     Random gerador = new Random();
     int num = gerador.nextInt(1000);
     int tentativas = 0;
-    int vetor[] = new int[5];
-    int vetor2[] = new int[6];
+    int[] vetor = new int[5];
+    int[] vetor2 = new int[6];
     int certo, i, maior = 0, c;
-    TextView txt = (TextView) findViewById(R.id.txt1);
     int var = 0;
-    TextView label = (TextView) findViewById(R.id.editText);
+    EditText label = findViewById(R.id.editText);
+    TextView M = (TextView) findViewById(R.id.txt1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +30,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void JogoTentativas(View v) {
-
-        TextView mensagem = (TextView) findViewById(R.id.txt1);
         String usuario = label.getText().toString();
-        int num;
-        num = Integer.parseInt(usuario);
+        int n;
+        n = Integer.parseInt(usuario);
         String msg;
         if (certo == 0) {
-            if (num == num) {
+            if (n == num) {
                 msg = "Parabéns! Você acertou! ";
-                mensagem.setText(msg);
+                M.setText(msg);
                 certo = 1;
                 for(i = 0; i<5; i++){
                     if(i == 0){
@@ -60,24 +58,24 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 ++c;
                 msg = "Você errou!";
-                if (num > num) {
+                if (n > num) {
                     msg += " O palpite foi maior";
-                    mensagem.setText(msg);
+                    M.setText(msg);
                 } else {
                     msg += " O palpite foi menor";
-                    mensagem.setText(msg);
+                    M.setText(msg);
                 }
             }
         } else {
             msg = "Você já acertou o número, clique no botão 'Jogar novamente'! ";
-            mensagem.setText(msg);
+            M.setText(msg);
         }
     }
     public void Recomecar(View v){
         tentativas = 1;
         certo = 0;
         num = gerador.nextInt(1000);
-        txt.setText(getResources().getString(R.string.lblRecomecar));
+        M.setText(getResources().getString(R.string.lblRecomecar));
     }
     public void carregarRecorde(View v){
         vetor2[0] = maior;
