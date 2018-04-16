@@ -16,15 +16,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class MainActivity extends AppCompatActivity
-        implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnScan;
     private TextView lblName, lblAddress;
     private String aUrl;
     private IntentIntegrator qrScan;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,34 +36,34 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onClick(View v){
+    public void onClick(View v) {
         qrScan.initiateScan();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null){
-                Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
-            }else {
-                try{
-                    String string = result.getContents();
-                    if((string.indexOf("http://www")!=0) && (string.indexOf(".com")!=0)){
-                        Intent intencao = new Intent(Intent.ACTION_VIEW, Uri.parse(string.toLowerCase()));
-                        startActivity(intencao);
-                    } else {
-                        JSONObject obj = new JSONObject(result.getContents());
-                        lblName.setText(obj.getString("name"));
-                        lblAddress.setText(obj.getString("address"));
-                    }
-                }catch (JSONException e){
-                    e.printStackTrace();
-                    Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+        if (result == null) {
+            Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
+
+        } else{
+            try {
+                String string = result.getContents();
+                if ((string.indexOf("http://www") != 0) && (string.indexOf(".com") != 0)) {
+                    Intent intencao = new Intent(Intent.ACTION_VIEW, Uri.parse(string.toLowerCase()));
+
+                    startActivity(intencao);
+                } else {
+                    JSONObject obj = new JSONObject(result.getContents());
+                    lblName.setText(obj.getString("name"));
+                    lblAddress.setText(obj.getString("address"));
                 }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
             }
-        }else{
-            super.onActivityResult(requestCode, resultCode, data);
+
         }
     }
 }
