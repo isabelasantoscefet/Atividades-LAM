@@ -20,7 +20,7 @@ public class Livro{
     }
 
     public String getAutor(){
-        return titulo;
+        return autor;
     }
 
     public void setAutor(String autor){

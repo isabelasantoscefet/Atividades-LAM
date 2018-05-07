@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity{
         listaLivros = new ArrayList<>();
 
         listaLivros.add(new Livro ("O Senhor dos Anéis", "J. R. R. Tolkien",
-                "Fantasia épica onde elfos, anões e homens enfrentam os poderes do mal."));
-        listaLivros.add(new Livro ("Prelúdio de Sangue", "Jean Plaudy",
-                "Romance narrativo sobre a família Plantageneta, a que mais durou no trono inglês"));
-        listaLivros.add(new Livro ("O Cortiço", "Aluíso Azevedo",
-                "Naturalismo no Brasil, em especial no Rio de Janeiro"));
+                "Fantasia épica onde elfos, anões, hobbits e homens enfrentam os poderes do mal."));
+        listaLivros.add(new Livro ("Uma breve história do Tempo", "Stephen W. Hawking",
+                "Uma introdução a alhguns conceitos mais profundos da Física."));
+        listaLivros.add(new Livro ("A espada da galáxia", "Marcelos Cassaro",
+                "A premiada ficção científica onde alienígenas rivais resolvem suas disputas na Terra."));
 
         rview.setAdapter(new LivroAdapter(listaLivros, this));
         RecyclerView.LayoutManager layout = new LinearLayoutManager(this,
