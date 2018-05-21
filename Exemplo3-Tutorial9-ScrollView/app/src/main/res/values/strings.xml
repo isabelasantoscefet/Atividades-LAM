@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Exemplo ScrollView</string>
+    <string name="msg_bem_vindo">Bem Vindo ao APP!</string>
+</resources>
