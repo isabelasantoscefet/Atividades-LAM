@@ -9,7 +9,6 @@ import com.example.alunos.exemplorecyclerview.adapter.LivroAdapter;
 import com.example.alunos.exemplorecyclerview.model.Livro;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
     private ArrayList<Livro> listaLivros;
